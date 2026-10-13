@@ -5,9 +5,9 @@ Static reference data for a **Lakehouse** plus a notebook that streams live netw
 
 ```
 
-├── TelcoNetworkLogsData/                      # 6 CSVs → upload to Lakehouse
-└── telco_network_eventstream_producer.ipynb
-└── load_csv_to_lakehouse.ipynb
+├── NetworkLogsData/                          # 6 CSVs → upload to Lakehouse
+└── telco_network_eventstream_producer.ipynb  #live streaming data generator
+└── load_csv_to_lakehouse.ipynb               #code to load 6 CSV sample data files to Lakehouse
   
 ```
 
