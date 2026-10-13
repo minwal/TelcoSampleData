@@ -4,10 +4,11 @@ Static reference data for a **Lakehouse** plus a notebook that streams live netw
 **Eventstream** custom endpoint.
 
 ```
-Telco_NetworkLogs/
-├── data/                      # 6 CSVs → upload to Lakehouse
-└── notebooks/
-    └── telco_network_eventstream_producer.ipynb
+
+├── TelcoNetworkLogsData/                      # 6 CSVs → upload to Lakehouse
+└── telco_network_eventstream_producer.ipynb
+└── load_csv_to_lakehouse.ipynb
+  
 ```
 
 Scope: 50 sites, 150 cells (5G + 4G), 1,000 subscribers across 5 Australian cities.
