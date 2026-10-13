@@ -1,0 +1,51 @@
+site_id,site_name,city,state,site_type,morphology,backhaul_type,vendor
+SITE-001,Perth 001,Perth,WA,Macro,Urban,Microwave,Samsung
+SITE-002,Adelaide 002,Adelaide,SA,Macro,Rural,Fiber,Ericsson
+SITE-003,Melbourne 003,Melbourne,VIC,Macro,Rural,Fiber,Samsung
+SITE-004,Adelaide 004,Adelaide,SA,Small Cell,Urban,Fiber,Samsung
+SITE-005,Melbourne 005,Melbourne,VIC,Macro,Urban,Fiber,Samsung
+SITE-006,Perth 006,Perth,WA,Macro,Urban,Microwave,Ericsson
+SITE-007,Perth 007,Perth,WA,Small Cell,Suburban,Microwave,Ericsson
+SITE-008,Brisbane 008,Brisbane,QLD,Macro,Urban,Microwave,Nokia
+SITE-009,Brisbane 009,Brisbane,QLD,Macro,Urban,Fiber,Ericsson
+SITE-010,Brisbane 010,Brisbane,QLD,Small Cell,Urban,Fiber,Nokia
+SITE-011,Sydney 011,Sydney,NSW,Macro,Urban,Microwave,Ericsson
+SITE-012,Brisbane 012,Brisbane,QLD,Macro,Urban,Fiber,Nokia
+SITE-013,Perth 013,Perth,WA,Macro,Suburban,Microwave,Samsung
+SITE-014,Sydney 014,Sydney,NSW,Macro,Suburban,Fiber,Nokia
+SITE-015,Melbourne 015,Melbourne,VIC,Small Cell,Urban,Fiber,Nokia
+SITE-016,Sydney 016,Sydney,NSW,Small Cell,Urban,Microwave,Ericsson
+SITE-017,Perth 017,Perth,WA,Macro,Urban,Microwave,Ericsson
+SITE-018,Sydney 018,Sydney,NSW,Macro,Urban,Fiber,Nokia
+SITE-019,Melbourne 019,Melbourne,VIC,Macro,Rural,Fiber,Samsung
+SITE-020,Brisbane 020,Brisbane,QLD,Macro,Suburban,Fiber,Samsung
+SITE-021,Perth 021,Perth,WA,Macro,Rural,Fiber,Samsung
+SITE-022,Brisbane 022,Brisbane,QLD,Macro,Urban,Fiber,Ericsson
+SITE-023,Perth 023,Perth,WA,Macro,Suburban,Microwave,Nokia
+SITE-024,Adelaide 024,Adelaide,SA,Macro,Rural,Microwave,Samsung
+SITE-025,Adelaide 025,Adelaide,SA,Small Cell,Urban,Fiber,Ericsson
+SITE-026,Sydney 026,Sydney,NSW,Small Cell,Urban,Fiber,Nokia
+SITE-027,Sydney 027,Sydney,NSW,Macro,Urban,Fiber,Nokia
+SITE-028,Melbourne 028,Melbourne,VIC,Macro,Urban,Fiber,Ericsson
+SITE-029,Adelaide 029,Adelaide,SA,Macro,Suburban,Fiber,Nokia
+SITE-030,Sydney 030,Sydney,NSW,Macro,Rural,Fiber,Samsung
+SITE-031,Sydney 031,Sydney,NSW,Macro,Suburban,Fiber,Samsung
+SITE-032,Perth 032,Perth,WA,Macro,Rural,Fiber,Ericsson
+SITE-033,Brisbane 033,Brisbane,QLD,Macro,Urban,Microwave,Samsung
+SITE-034,Adelaide 034,Adelaide,SA,Macro,Suburban,Microwave,Samsung
+SITE-035,Brisbane 035,Brisbane,QLD,Macro,Suburban,Microwave,Ericsson
+SITE-036,Adelaide 036,Adelaide,SA,Macro,Suburban,Fiber,Nokia
+SITE-037,Brisbane 037,Brisbane,QLD,Macro,Rural,Fiber,Samsung
+SITE-038,Melbourne 038,Melbourne,VIC,Macro,Urban,Fiber,Samsung
+SITE-039,Adelaide 039,Adelaide,SA,Macro,Suburban,Fiber,Samsung
+SITE-040,Adelaide 040,Adelaide,SA,Macro,Suburban,Microwave,Samsung
+SITE-041,Perth 041,Perth,WA,Macro,Rural,Fiber,Nokia
+SITE-042,Adelaide 042,Adelaide,SA,Small Cell,Rural,Fiber,Nokia
+SITE-043,Brisbane 043,Brisbane,QLD,Macro,Urban,Fiber,Samsung
+SITE-044,Perth 044,Perth,WA,Macro,Suburban,Fiber,Nokia
+SITE-045,Adelaide 045,Adelaide,SA,Macro,Suburban,Fiber,Ericsson
+SITE-046,Sydney 046,Sydney,NSW,Small Cell,Urban,Fiber,Nokia
+SITE-047,Sydney 047,Sydney,NSW,Macro,Suburban,Fiber,Nokia
+SITE-048,Melbourne 048,Melbourne,VIC,Macro,Urban,Fiber,Ericsson
+SITE-049,Sydney 049,Sydney,NSW,Small Cell,Rural,Fiber,Samsung
+SITE-050,Melbourne 050,Melbourne,VIC,Macro,Urban,Fiber,Samsung

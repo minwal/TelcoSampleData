@@ -1,0 +1,13 @@
+alarm_code,alarm_name,severity,domain,service_affecting,mttr_target_min
+ALM-001,Cell Out of Service,Critical,RAN,Y,60
+ALM-002,High PRB Utilisation,Major,RAN,N,180
+ALM-003,RRC Setup Failure High,Major,RAN,N,180
+ALM-004,Handover Failure High,Minor,RAN,N,480
+ALM-005,RF Unit Temperature High,Major,RAN,N,180
+ALM-006,Antenna / VSWR Fault,Major,RAN,N,180
+ALM-007,Site Power Failure,Critical,Power,Y,60
+ALM-008,Battery Low,Major,Power,N,180
+ALM-009,Backhaul Link Down,Critical,Transport,Y,60
+ALM-010,Backhaul Congestion,Major,Transport,N,180
+ALM-011,High Packet Loss,Major,Transport,N,180
+ALM-012,Core Session Failure High,Major,Core,N,180
