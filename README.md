@@ -1,6 +1,6 @@
 # Telco Network Logs Analytics Hand-on Lab
 
-As part of this lab, you'll build Network Logs Analytics scenario using live Cell KPIs and Network alarms live streaming data. You'll ingest, transform and analytize this data in real-time so when an incident happens, you can get alerts immediately and you can do faster troubleshooting and RCA on those incidents, and take actions in real-time.
+As part of this lab, you'll build Network Logs Analytics scenario using Cell KPIs and Network alarms live streaming data. You'll ingest, transform and analytize this data in real-time so when an incident happens, you can get alerts immediately and you can do faster troubleshooting and RCA on those incidents, and take actions in real-time.
 
 Cell KPIs are the performance counters each cell reports and industry groups them into five families, and your dataset has all five:
 
