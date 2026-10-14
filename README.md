@@ -2,6 +2,10 @@
 
 As part of this lab, you'll build Network Logs Analytics scenario using live Cell KPIs and Network alarms live streaming data. You'll ingest, transform and analytize this data in real-time so when an incident happens, you can get alerts immediately and you can do faster troubleshooting and RCA on those incidents, and take actions in real-time.
 
+Cell KPIs are the performance counters each cell reports and industry groups them into five families, and your dataset has all five:
+
+<img width="1191" height="946" alt="image" src="https://github.com/user-attachments/assets/a0da444d-8801-4da4-a22e-aa64b1622522" /><br>
+
 Static reference data for a **Lakehouse** plus a notebook that streams live network logs to an
 **Eventstream** custom endpoint.
 
