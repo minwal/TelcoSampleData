@@ -1,0 +1,47 @@
+//Use this line to execute all commands with one click by removing empty lines in between all command
+//.execute database script <|
+
+//Create KQL function with the data parsing logic
+.create-or-alter function ParseNetworkLogs() {
+     NetworkLogs
+    | where event_type == "network.alarm"
+    | extend
+        managed_object = tostring(payload.source.managed_object),
+        vendor = tostring(payload.source.vendor),
+        technology = tostring(payload.source.technology),
+        band = tostring(payload.source.band),
+        probable_cause = tostring(payload.detail.probable_cause),
+        threshold_value = todouble(payload.detail.threshold_value),
+        measured_value = todouble(payload.detail.measured_value),
+        occurrence_count = toint(payload.detail.occurrence_count),
+        acknowledged = tobool(payload.handling.acknowledged)
+    | parse managed_object with "Site=" SITE ",Cell=" CELL
+    | project-away
+        prb_utilisation_pct,
+        rrc_success_rate_pct,
+        drop_rate_pct,
+        throughput_mbps,
+        active_users,
+        rsrp_dbm,
+        sinr_db,
+        congested,
+        incident_id,
+        payload,
+        PartitionId
+ }
+
+//Quick and easy way to create destination table(ParsedNetworkAlarmLogs) from the function/table(ParseNetworkLogs) schema
+.set-or-append ParsedNetworkAlarmLogs <| 
+ParseNetworkLogs
+| take 0
+
+
+//KQL command to apply update policy on a destination table(ParsedNetworkAlarmLogs)
+.alter table ParsedNetworkAlarmLogs policy update
+    ```[{
+    "IsEnabled": true,
+    "Source": "NetworkLogs",
+    "Query": "ParseNetworkLogs()",
+    "IsTransactional": true,
+    "PropagateIngestionProperties": true
+}]```
