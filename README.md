@@ -60,12 +60,6 @@ Eventhouse as a `dynamic` column you can query with dot notation, no pre-flatten
 | `cell.kpi` | `radio`, `traffic`, `resources`, `health` | 15 |
 | `network.alarm` | `source`, `detail`, `handling` | 12 |
 
-```kusto
-CellKpi
-| extend cqi = toreal(payload.radio.cqi),
-         cpu = toreal(payload.resources.cpu_load_pct)
-| where cpu > 70
-```
 
 Cells carry a persistent `load` value that drifts between ticks, so the time-series charts look
 like a real network rather than random noise.
@@ -93,7 +87,7 @@ Matching alarms (`ALM-002`, `ALM-003`, `ALM-010`, `ALM-012`) fire at the same ti
 
 ### 1. Upload the CSVs then convert them to Lakehouse Delta tables using this notebook:
 ```bash
-LoadCSVsToLakehouse.py
+load_csv_to_lakehouse.ipynb
 ```
 Fabric → Lakehouse → **Files** → *Upload folder* → select CSV files → run notebook to convert them to Delta tables
 
@@ -101,26 +95,24 @@ Fabric → Lakehouse → **Files** → *Upload folder* → select CSV files → 
 **New Eventstream** → **Add source** → *Custom endpoint* → **Event hub** tab → copy the
 *Connection string-primary key*.
 
-### 3. Run the notebook
-Upload `notebooks/telco_network_eventstream_producer.ipynb`, paste the connection string into
-cell 2, run all cells. It streams until you stop it.
-
-### 4. Route to Eventhouse
-Add a **Filter** transformation on `event_type`:
+**Make sure you select Schema ware Eventstream checkbox so you can classify events based on type to be routed to two Eventhouse tables**
 
 | Filter | Table |
 |---|---|
 | `event_type == "cell.kpi"` | `CellKpi` |
 | `event_type == "network.alarm"` | `NetworkAlarm` |
 
+### 3. Run the notebook
+Upload `notebooks/telco_network_eventstream_producer.ipynb`, paste the connection string into
+cell 2, run all cells. It streams until you stop it.
+
+### 4. Route to Eventhouse
+
+
 ---
 
 ## Included KQL
 
-Cell 6 ships eight queries: congested cells, the incident timechart, alarms by severity and city,
-alarm-burst detection, live KPIs joined to `dim_site`, subscribers affected by congestion (with VIP
-count), and two that query into the nested `payload` column — radio/resource counters and alarm
-threshold breaches needing field dispatch.
 
 ---
 
