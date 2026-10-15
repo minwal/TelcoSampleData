@@ -91,11 +91,11 @@ Matching alarms (`ALM-002`, `ALM-003`, `ALM-010`, `ALM-012`) fire at the same ti
 
 ## Setup
 
-### 1. Generate and upload the CSVs
+### 1. Upload the CSVs then convert them to Lakehouse Delta tables using this notebook:
 ```bash
-python generate_telco_data.py
+LoadCSVsToLakehouse.py
 ```
-Fabric → Lakehouse → **Files** → *Upload folder* → select `data`, then load to Delta tables.
+Fabric → Lakehouse → **Files** → *Upload folder* → select CSV files → run notebook to convert them to Delta tables
 
 ### 2. Create the Eventstream
 **New Eventstream** → **Add source** → *Custom endpoint* → **Event hub** tab → copy the
