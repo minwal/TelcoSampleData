@@ -108,10 +108,9 @@ cell 2, run all cells. It streams until you stop it.
 
 ### 4. Route to Eventhouse
 
-
+### 5. Use KQL Scripts for creating update policy and few sample queries for analysis
 ---
 
-## Included KQL
 
 
 ---
