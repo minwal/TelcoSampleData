@@ -1,0 +1,81 @@
+// Congested cells right now
+CellTowerLogs
+| where event_time > ago(10m)
+| summarize prb = avg(prb_utilisation_pct),
+            tput = avg(throughput_mbps),
+            drop = avg(drop_rate_pct),
+            users = max(active_users)
+  by cell_id, site_id, city, technology, band
+| where prb > 50
+| order by prb desc
+
+// KPI collapse over time
+CellTowerLogs
+| where ingestion_time() > ago(1h) and  congested == true and alarm_active == true
+| summarize avg_prb = avg(prb_utilisation_pct),
+            avg_tput = avg(throughput_mbps),
+            avg_drop = avg(drop_rate_pct)
+  by bin(event_time, 5s)
+| render timechart
+
+// Alarms by severity and city
+NetworkAlarms
+| where todatetime(event_time) > ago(1h) and state == "raised"
+| summarize alarms = count(), cells = dcount(cell_id)
+  by severity, domain, city
+| order by alarms desc
+
+// Alarm bursts - 5+ alarms on one site in 5 minutes
+NetworkAlarms
+| where todatetime(event_time) > ago(1h) and state == "raised"
+| summarize alarm_count = count(), codes = make_set(alarm_code)
+  by site_id, bin(todatetime(event_time), 5m)
+| where alarm_count >= 5
+| order by alarm_count desc
+
+// Live KPIs joined to the Lakehouse site dimension to get details like site_name, morphology
+CellTowerLogs
+| where event_time > ago(1h)
+| summarize prb = avg(prb_utilisation_pct), tput = avg(throughput_mbps)
+  by cell_id, site_id
+| lookup kind=leftouter dim_site on site_id
+| project site_name, city, morphology, vendor, cell_id, prb, tput
+| order by prb desc
+
+
+// Which vip subscribers are on congested cells
+CellTowerLogs
+| where event_time > ago(10m) and congested == true
+| summarize prb = avg(prb_utilisation_pct) by site_id
+| join kind=inner (dim_subscriber) on $left.site_id == $right.home_site_id
+| where vip_flag == "Y"
+//| summarize affected = count(), vips = countif(vip_flag == "Y") 
+
+
+// Query into the nested JSON payload (dynamic column, dot notation)
+NetworkLogs
+| where todatetime(event_time) > ago(1h)
+| extend cqi         = toreal(payload.radio.cqi),
+         dl_volume   = toreal(payload.traffic.dl_volume_mb),
+         prb_used    = toint(payload.resources.prb_used),
+         cpu_load    = toreal(payload.resources.cpu_load_pct),
+         temperature = toreal(payload.resources.temperature_c),
+         health      = tostring(payload.health.state)
+| summarize avg_cqi = avg(cqi), total_dl_gb = sum(dl_volume) / 1024,
+            avg_cpu = avg(cpu_load), max_temp = max(temperature),
+            congested_samples = countif(health == "Congested")
+  by cell_id, city
+| where avg_cpu > 70 or max_temp > 55
+| order by avg_cpu desc
+
+
+// Alarm payload detail - threshold breaches needing field dispatch
+NetworkAlarms
+| where todatetime(event_time) > ago(1h) and state == "raised"
+| where field_dispatch == true
+| extend breach_margin = measured_value - threshold_value
+| project event_time, site_id, cell_id, city, alarm_name, severity,
+          probable_cause, vendor, breach_margin, occurrence_count
+| order by breach_margin desc
+
+
