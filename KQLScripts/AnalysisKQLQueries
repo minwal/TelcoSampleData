@@ -103,5 +103,3 @@ CellTowerLogs
 ) on $left.join_key == $right.join_key
 
 
-//Prompt to create Ontology
-//can you build an ontology from EVENTHOUSE_NAME Eventhouse and LAKEHOUSE_NAME Lakehouse?
